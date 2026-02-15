@@ -16,4 +16,5 @@ npm-debug.log
 dist/
 tmp/
 venv/
-__pycache__/
+__pycache__/openclaw.json
+.env

@@ -1,0 +1,93 @@
+{
+  "id": "memory-hybrid",
+  "kind": "memory",
+  "uiHints": {
+    "embedding.apiKey": {
+      "label": "OpenAI API Key",
+      "sensitive": true,
+      "placeholder": "sk-proj-...",
+      "help": "API key for OpenAI embeddings (or use ${OPENAI_API_KEY})"
+    },
+    "embedding.model": {
+      "label": "Embedding Model",
+      "placeholder": "text-embedding-3-small",
+      "help": "OpenAI embedding model to use"
+    },
+    "lanceDbPath": {
+      "label": "LanceDB Path",
+      "placeholder": "~/.openclaw/memory/lancedb",
+      "advanced": true
+    },
+    "sqlitePath": {
+      "label": "SQLite Path",
+      "placeholder": "~/.openclaw/memory/facts.db",
+      "advanced": true
+    },
+    "autoCapture": {
+      "label": "Auto-Capture",
+      "help": "Automatically capture important information from conversations"
+    },
+    "autoRecall": {
+      "label": "Auto-Recall",
+      "help": "Automatically inject relevant memories into context"
+    },
+    "llmBaseUrl": {
+      "label": "LLM Base URL",
+      "placeholder": "http://127.0.0.1:20128/v1",
+      "advanced": true,
+      "help": "Optional: base URL for an LLM to use as a lightweight re-ranker when embeddings are disabled"
+    },
+    "llmApiKey": {
+      "label": "LLM API Key",
+      "sensitive": true,
+      "advanced": true,
+      "help": "Optional: API key for the re-ranker LLM (can be ${OPENAI_API_KEY})"
+    },
+    "llmModel": {
+      "label": "LLM Model",
+      "placeholder": "combo-ben",
+      "advanced": true,
+      "help": "Optional: model id to call for re-ranking when embeddings are disabled"
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "embedding": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "apiKey": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string",
+            "enum": ["text-embedding-3-small", "text-embedding-3-large"]
+          }
+        }
+      },
+      "lanceDbPath": {
+        "type": "string"
+      },
+      "sqlitePath": {
+        "type": "string"
+      },
+      "autoCapture": {
+        "type": "boolean"
+      },
+      "autoRecall": {
+        "type": "boolean"
+      },
+      "llmBaseUrl": {
+        "type": "string"
+      },
+      "llmApiKey": {
+        "type": "string"
+      },
+      "llmModel": {
+        "type": "string"
+      }
+    }
+  }
+}
